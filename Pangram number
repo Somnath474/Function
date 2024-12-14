@@ -1,0 +1,28 @@
+import java.util.Scanner;
+import java.util.HashSet;
+
+public class PangramNumber {
+    public static boolean isPangramNumber(long number) {
+        HashSet<Integer> digits = new HashSet<>();
+        while (number > 0) {
+            digits.add((int) (number % 10));
+            number /= 10;
+            if (digits.size() == 10) {
+                return true;
+            }
+        }
+        return digits.size() == 10;
+    }
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter a number: ");
+        long number = scanner.nextLong();
+        if (isPangramNumber(number)) {
+            System.out.println("The number is a Pangram Number.");
+        } else {
+            System.out.println("The number is NOT a Pangram Number.");
+        }
+        scanner.close();
+    }
+}
